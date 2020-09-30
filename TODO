@@ -1,0 +1,11 @@
+1. Visualiser l'image Y
+2. Transforme en X(coordonees, color)
+3. function [P, E, Ip] = codeur_ACP(X,p) 
+4. function X = decodeur_ACP(P,E)
+5. X -> Y
+6. Visualiser
+_______________________________________
+1. Pour chaque p, calculer le pourcentage moyen de l'info
+2. quantite proportionnelle au nombre de bits envoyes vers la Terre
+3. Commenter les resultats ( Recette pour determiner les valeurs optimum des differents parametres du probleme, ou proceder a d'autres analyses,...)
+4. Bonus : 
