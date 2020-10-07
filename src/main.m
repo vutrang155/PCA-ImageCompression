@@ -3,7 +3,7 @@ global DATA_PATH = "../data/";
 global OUTPUT_PATH = "../out/";
 
 # Init
-im_file = [DATA_PATH "ex.jpg"];
+im_file = [DATA_PATH "Mars_dunes.jpg"];
 Yini = single(imread(im_file));
 ltot = size(Yini, 1);
 ctot = size(Yini, 2);
@@ -18,7 +18,7 @@ trois = size(Yini, 3);
 X = reshape(Yini,ltot*ctot, trois);
 
 
-nl =4; # block
+nl =1; # block
 l = floor(ltot/nl); # lines in 1 block
 nc = nl * ctot / ltot;
 if mod(nc,1)
@@ -34,7 +34,7 @@ function [P, E, Ip] = codeur_ACP(X, p)
   
   n = size(X, 1);
   #V = (X.') * X ./ (n-1); # var-covar matrix
-  V = X*(X.') ./ (n-1);
+  V = X.'*(X) ./ (n-1);
   [E, D] = eig(V); 
 
   # Sort 
@@ -57,7 +57,7 @@ function X = decodeur_ACP(P, E)
 endfunction
 
 # Compressing with block
- p =1
+for p = 1:3
   Yfin = zeros(ltot,ctot,3);
   Ips = zeros(nl*nc, 1);
   it = 1;
@@ -97,3 +97,4 @@ endfunction
   str = sprintf("p = %d",p);
   title(str)
   axis equal;
+end
